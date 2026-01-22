@@ -1,2 +1,2 @@
 # Fitness-Tracker-Program
-Using Python and Pygame to make a Fitness Tracker Program.
+Using python and tkinter we plan on making a fitness tracker program. With a clean UI login capabilites along with knowledge on fitness and exercise workouts. We both enjoy working out at not just the school gym but at home and at a boxing gym. We are passionate about this project because we did not have muhc guidance when beggining our own fitness journey and want to help others. We both think fitness is an important aspect in anyone life no matter their skill level.
