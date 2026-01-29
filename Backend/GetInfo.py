@@ -11,4 +11,4 @@ def getInfo(email_var, pass_var):
             #log them in
             pass
     with open(DATA_FILE, 'w') as f:
-        json.dump(data, f, indent=4)
+        json.dump(f, indent=4)

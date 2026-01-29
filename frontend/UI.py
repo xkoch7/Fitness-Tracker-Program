@@ -1,9 +1,15 @@
 import tkinter as tk
+from PIL import ImageTk, Image
 from Backend.GetInfo import getInfo
 root = tk.Tk()
 root.title("T&X Fitness")
 # Set the window size to 500 pixels wide by 850 high
 root.geometry("500x850")
+image_path = "GymLogo.png"
+pil_image = Image.open(image_path)
+tk_image = ImageTk.PhotoImage(pil_image)
+image_label = tk.Label(root, image=tk_image)
+image_label.image = tk_image
 
 def handle_login():
     email = email_var.get()
@@ -23,10 +29,11 @@ pass_entry = tk.Entry(root, textvariable = pass_var, font=("calibre", 10,"normal
 
 login_btn = tk.Button(root, text = "Login King", command = handle_login)
 
-email_label.grid(row=0, column=0)
-email_entry.grid(row=0, column=1)
-pass_label.grid(row=1, column=0)
-pass_entry.grid(row=1, column=1)
+email_label.grid(row=1, column=0)
+email_entry.grid(row=1, column=1)
+pass_label.grid(row=2, column=0)
+pass_entry.grid(row=2, column=1)
+image_label.grid(row=1, column=0)
 
 login_btn.grid(row=2, column=1)
 
