@@ -1,16 +1,6 @@
-import sys
-import os
-
+from vars import *
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(PROJECT_ROOT)
-
-import tkinter as tk
-from PIL import ImageTk, Image
-from Backend.GetInfo import getInfo
-root = tk.Tk()
-root.title("T&X Fitness")
-# Set the window size to 500 pixels wide by 850 high
-root.geometry("500x850")
 image_path = "frontend\Images\GymLogo.png"
 pil_image = Image.open(image_path)
 new_width = 250
@@ -18,7 +8,7 @@ new_height = 250
 resized_image = pil_image.resize((new_width, new_height), Image.Resampling.LANCZOS)
 tk_image = ImageTk.PhotoImage(resized_image)
 image_label = tk.Label(root, image=tk_image)
-image_label.image = tk_image
+image_label.image = tk_image 
 
 
 
