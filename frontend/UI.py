@@ -13,9 +13,14 @@ root.title("T&X Fitness")
 root.geometry("500x850")
 image_path = "frontend\Images\GymLogo.png"
 pil_image = Image.open(image_path)
-tk_image = ImageTk.PhotoImage(pil_image)
+new_width = 250
+new_height = 250
+resized_image = pil_image.resize((new_width, new_height), Image.Resampling.LANCZOS)
+tk_image = ImageTk.PhotoImage(resized_image)
 image_label = tk.Label(root, image=tk_image)
 image_label.image = tk_image
+
+
 
 def handle_login():
     email = email_var.get()
@@ -39,8 +44,7 @@ email_label.grid(row=1, column=0)
 email_entry.grid(row=1, column=1)
 pass_label.grid(row=2, column=0)
 pass_entry.grid(row=2, column=1)
-image_label.grid(row=1, column=0)
-
-login_btn.grid(row=2, column=1)
+image_label.grid(row=0, column=1)
+login_btn.grid(row=3, column=1)
 
 root.mainloop()
