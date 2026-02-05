@@ -1,14 +1,23 @@
 
 import json
-DATA_FILE = 'UserInfo.json'
-def getInfo(email_var, pass_var):
-    with open(DATA_FILE,"r", encoding="uft-8"):
-        emails= json.load(DATA_FILE)
-        if not emails[email_var]:
-             #return error email not registered
-             pass
-        elif emails[email_var]== pass_var:
-            #log them in
-            pass
-    with open(DATA_FILE, 'w') as f:
+DATA_FILE = 'Backend\\UserInfo.json'
+def getInfo(email_var, pass_var) -> bool:
+    with open(DATA_FILE,"r", encoding="utf-8") as f:
+        emails= json.load(f)['emails']
+        if email_var not in emails.keys():
+            
+            return False
+        else:
+            if emails[email_var]!=pass_var:
+                #return error wrong password
+                return False
+            
+            return True
+        
+            
+    
+    with open(f, 'w') as f:
         json.dump(f, indent=4)
+if __name__ == "__main__":
+    import os
+    print(os.path.abspath(DATA_FILE))

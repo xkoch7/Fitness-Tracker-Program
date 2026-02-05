@@ -1,26 +1,33 @@
-import sys
-import os
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-sys.path.append(PROJECT_ROOT)
-from vars import root, tk
-def open_tracking_screen():
+
+def open_tracking_screen(root,tk):
     temp=tk.Label(root, text="Tracking Screen - Under Construction", font=("Helvetica", 16))
-    temp.pack(pady=20)
-    root.after(2000, lambda: temp.pack_forget())
-def open_home_screen():
+    temp.grid(column=1, row=5)
+    root.after(2000, lambda: temp.grid_forget())
+def open_home_screen(root,tk):
     temp=tk.Label(root, text="Home Screen - Under Construction", font=("Helvetica", 16))
-    temp.pack(pady=20)
-    root.after(2000, lambda: temp.pack_forget())  
-def open_settings_screen():
+    temp.grid(column=1, row=6)
+    root.after(2000, lambda: temp.grid_forget())  
+def open_settings_screen(root,tk):
     temp=tk.Label(root, text="Settings Screen - Under Construction", font=("Helvetica", 16)) 
     # dont put pack on same line makes the var a NoneType
-    temp.pack(pady=20)
-    root.after(2000, lambda: temp.pack_forget())  
+    temp.grid(column=1, row=7)
+    root.after(2000, lambda: temp.grid_forget())  
      
+def setup(root,tk) -> list:
+    welcome_label=tk.Label(root, text="Welcome to T&X Fitness", font=("Helvetica", 16))
+    welcome_label.grid(column=1, row=0, pady=20, padx=100)
+    track_btn = tk.Button(root, text="Track Workout", width=20, height=2,command=lambda: open_tracking_screen(root,tk))
+    track_btn.grid(column=1, row=2,padx=100, pady=10)
+    history_btn = tk.Button(root, text="View History", width=20, height=2, command=lambda: open_home_screen(root,tk))
+    history_btn.grid(column=1, row=3, pady=10,padx=100)
+    settings_btn = tk.Button(root, text="Settings", width=20, height=2,command=lambda: open_settings_screen(root,tk))
+    settings_btn.grid(column=1, row=4, pady=10,padx=100)
+    return [track_btn, history_btn, settings_btn]
     
-tk.Label(root, text="Welcome to T&X Fitness", font=("Helvetica", 16)).pack(pady=20)
-track_btn = tk.Button(root, text="Track Workout", width=20, height=2,command=open_tracking_screen).pack(pady=10)
-history_btn = tk.Button(root, text="View History", width=20, height=2, command=open_home_screen).pack(pady=10)
-settings_btn = tk.Button(root, text="Settings", width=20, height=2,command=open_settings_screen).pack(pady=10)
-
-root.mainloop()
+if __name__ == "__main__":
+    import tkinter as tk
+    root= tk.Tk()
+    root.title("T&X Fitness")
+    root.geometry("500x850")
+    setup(root,tk)
+    root.mainloop()
