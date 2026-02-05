@@ -3,7 +3,8 @@ from PIL import ImageTk, Image
 from Backend.GetInfo import getInfo
 
 
-
+#function to check if inputed email matches the saved list along with the cooresponding password
+#if not correct asks user to try again or create account
 def handle_login(email_var, pass_var, root, tk):
     email = email_var.get()
     password = pass_var.get()
@@ -24,7 +25,14 @@ def handle_login(email_var, pass_var, root, tk):
         temp.grid(row=3, column=1)
         root.after(2000, lambda: temp.grid_forget())
         return False
-    
+def createAccScreen(root):
+    import vars
+    vars.screen = 3  # Move to create Acount screen
+    for widget in vars.widgets:
+        widget.grid_forget()
+    root.quit()  # Exit the mainloop to refresh the screen
+
+#setup function to display all buttons and labels and make program functional
 def setup(root,tk) -> list:
     email_var = tk.StringVar()
     pass_var = tk.StringVar()
@@ -38,6 +46,8 @@ def setup(root,tk) -> list:
     pass_entry = tk.Entry(root, textvariable = pass_var, font=("calibre", 10,"normal"), show="*")
 
     login_btn = tk.Button(root, text = "Login King", command = lambda: handle_login(email_var, pass_var, root, tk))
+
+    createAcc_btn = tk.Button(root, text = "Create Account", command = lambda: createAccScreen(root))
 
     image_path = "frontend\\Images\\GymLogo.png" 
     pil_image = Image.open(image_path)
@@ -54,6 +64,7 @@ def setup(root,tk) -> list:
     pass_entry.grid(row=2, column=1)
     image_label.grid(row=0, column=1)
     login_btn.grid(row=4, column=1)
+    createAcc_btn.grid(row=6, column=1)
     return [email_label, email_entry, pass_label, pass_entry, login_btn, image_label]
 if __name__ == "__main__":
     import tkinter as tk
