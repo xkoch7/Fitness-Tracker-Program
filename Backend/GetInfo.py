@@ -18,16 +18,15 @@ def getInfo(email_var, pass_var) -> bool:
         
             
     
-    with open(f, 'w') as f:
-        json.dump(f, indent=4)
 #function to allow user to create account and writes information to json file
+
 def createAcc(email_var, pass_var):
     with open(DATA_FILE,"W", encoding="utf-8") as f:
         emails= json.load(f)['emails']
         emails[email_var] = pass_var
 
-    with open(f, 'w') as f:
-        json.dump(f, indent=4)
+
+        json.dump({"emails": emails}, f, indent=4)
 if __name__ == "__main__":
     import os
     print(os.path.abspath(DATA_FILE))

@@ -33,20 +33,16 @@ def createAccScreen(root):
     root.quit()  # Exit the mainloop to refresh the screen
 
 #setup function to display all buttons and labels and make program functional
+# returns list of widgets that get deleted on screen change
 def setup(root,tk) -> list:
     email_var = tk.StringVar()
     pass_var = tk.StringVar()
 
     email_label = tk.Label(root, text = "Enter email:", font=("calibre", 10,"normal"))
-
     email_entry = tk.Entry(root, textvariable = email_var, font=("calibre", 10,"normal"))
-
     pass_label = tk.Label(root, text = "Enter password:", font=("calibre", 10,"normal"))
-
     pass_entry = tk.Entry(root, textvariable = pass_var, font=("calibre", 10,"normal"), show="*")
-
     login_btn = tk.Button(root, text = "Login King", command = lambda: handle_login(email_var, pass_var, root, tk))
-
     createAcc_btn = tk.Button(root, text = "Create Account", command = lambda: createAccScreen(root))
 
     image_path = "frontend\\Images\\GymLogo.png" 
@@ -65,7 +61,7 @@ def setup(root,tk) -> list:
     image_label.grid(row=0, column=1)
     login_btn.grid(row=4, column=1)
     createAcc_btn.grid(row=6, column=1)
-    return [email_label, email_entry, pass_label, pass_entry, login_btn, image_label]
+    return [email_label, email_entry, pass_label, pass_entry, login_btn, image_label,createAcc_btn]
 if __name__ == "__main__":
     import tkinter as tk
     root= tk.Tk()
