@@ -13,6 +13,7 @@ def handleAcc(email_var, pass_var1, pass_var2, root, tk):
     createAcc(email, password)
 
     import vars
+    vars.email = email
     vars.screen = 2  # Move to HomeScreen
     for widget in vars.widgets:
         widget.grid_forget()
@@ -48,6 +49,7 @@ def setup(root,tk) -> list:
     pass_label2.grid(row=3, column=0)
     pass_entry2.grid(row=3, column=1)
     createAcc_btn.grid(row=4, column=1)
+    return [email_label, email_entry, pass_label1, pass_entry1, pass_label2, pass_entry2, createAcc_btn]
 
 if __name__ == "__main__":
     import tkinter as tk

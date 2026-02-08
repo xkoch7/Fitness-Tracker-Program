@@ -18,16 +18,20 @@ def getInfo(email_var, pass_var) -> bool:
         
             
     
-    with open(f, 'w') as f:
-        json.dump(f, indent=4)
 #function to allow user to create account and writes information to json file
-def createAcc(email_var, pass_var):
-    with open(DATA_FILE,"W", encoding="utf-8") as f:
-        emails= json.load(f)['emails']
-        emails[email_var] = pass_var
 
-    with open(f, 'w') as f:
-        json.dump(f, indent=4)
+def createAcc(email_var, pass_var):
+    with open(DATA_FILE,"r" ) as f:
+        emails= json.load(f)
+        emails['emails'][email_var] = pass_var
+        emails['workoutData'][email_var] = {}
+    
+    with open(DATA_FILE,"w", encoding="utf-8") as f:
+        json.dump(emails, f, indent=4)
+        
 if __name__ == "__main__":
-    import os
-    print(os.path.abspath(DATA_FILE))
+    import tkinter as tk
+    root= tk.Tk()
+    em=tk.StringVar(value="test1")
+    pw=tk.StringVar(value="test2")
+    createAcc(em.get(), pw.get())

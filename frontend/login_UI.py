@@ -17,6 +17,7 @@ def handle_login(email_var, pass_var, root, tk):
     if getInfo(email, password):
         import vars
         vars.screen = 2  # Move to HomeScreen
+        vars.email = email
         for widget in vars.widgets:
             widget.grid_forget()
         root.quit()  # Exit the mainloop to refresh the screen
