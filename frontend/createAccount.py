@@ -24,32 +24,32 @@ def handleAcc(email_var, pass_var1, pass_var2, root, tk):
 
 
 def setup(root,tk) -> list:
-    email_var = tk.StringVar()
-    pass_var1 = tk.StringVar()
-    pass_var2 = tk.StringVar()
+    emailVar = tk.StringVar()
+    passVar1 = tk.StringVar()
+    passVar2 = tk.StringVar()
     pass_var = tk.StringVar()
-    email_label = tk.Label(root, text = "Enter email:", font=("calibre", 10,"normal"))
+    emailLabel = tk.Label(root, text = "Enter email:", font=("calibre", 10,"normal"))
 
-    email_entry = tk.Entry(root, textvariable = email_var, font=("calibre", 10,"normal"))
+    emailEntry = tk.Entry(root, textvariable = emailVar, font=("calibre", 10,"normal"))
 
-    pass_label1 = tk.Label(root, text = "Enter password:", font=("calibre", 10,"normal"))
+    passLabel1 = tk.Label(root, text = "Enter password:", font=("calibre", 10,"normal"))
 
-    pass_entry1 = tk.Entry(root, textvariable = pass_var1, font=("calibre", 10,"normal"), show="*")
+    passEntry1 = tk.Entry(root, textvariable = passVar1, font=("calibre", 10,"normal"), show="*")
 
-    pass_label2 = tk.Label(root, text = "Enter password:", font=("calibre", 10,"normal"))
+    passLabel2 = tk.Label(root, text = "Enter password:", font=("calibre", 10,"normal"))
 
-    pass_entry2 = tk.Entry(root, textvariable = pass_var2, font=("calibre", 10,"normal"), show="*")
+    passEntry2 = tk.Entry(root, textvariable = passVar2, font=("calibre", 10,"normal"), show="*")
 
-    createAcc_btn = tk.Button(root, text = "Create Account", command = lambda: handleAcc(email_var, pass_var1, pass_var2, root, tk))
+    createAccBtn = tk.Button(root, text = "Create Account", command = lambda: handleAcc(emailVar, passVar1, passVar2, root, tk))
 
-    email_label.grid(row=1, column=0)
-    email_entry.grid(row=1, column=1)
-    pass_label1.grid(row=2, column=0)
-    pass_entry1.grid(row=2, column=1)
-    pass_label2.grid(row=3, column=0)
-    pass_entry2.grid(row=3, column=1)
-    createAcc_btn.grid(row=4, column=1)
-    return [email_label, email_entry, pass_label1, pass_entry1, pass_label2, pass_entry2, createAcc_btn]
+    emailLabel.grid(row=1, column=0)
+    emailEntry.grid(row=1, column=1)
+    passLabel1.grid(row=2, column=0)
+    passEntry1.grid(row=2, column=1)
+    passLabel2.grid(row=3, column=0)
+    passEntry2.grid(row=3, column=1)
+    createAccBtn.grid(row=4, column=1)
+    return [emailLabel, emailEntry, passLabel1, passEntry1, passLabel2, passEntry2, createAccBtn]
 
 if __name__ == "__main__":
     import tkinter as tk
