@@ -12,14 +12,9 @@ def handleAcc(emailVar, passVar1, passVar2, root, tk):
 
     createAcc(email, password)
 
-    import vars
-    vars.email = email
-    vars.screen = 2  # Move to HomeScreen
-    for widget in vars.widgets:
-        widget.grid_forget()
+    from vars import changeScreen
+    changeScreen(3)  # Move to login screen after account creation
 
-    root.quit()
-    
 
 
 

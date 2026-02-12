@@ -1,8 +1,7 @@
 #function to acces the tracking screen in order to effectively track workouts (currently working on)
-def openTrackingScreen(root,tk):
-    underConst=tk.Label(root, text="Tracking Screen - Under Construction", font=("Helvetica", 16))
-    underConst.grid(column=1, row=5)
-    root.after(2000, lambda: underConst.grid_forget())
+def openTrackingScreen():
+    from vars import changeScreen
+    changeScreen(4) 
     
 #function to acces the home screen main ui to access all info (currently working on)
 def openHistoryScreen(root,tk):
@@ -22,8 +21,8 @@ def openSettingsScreen(root,tk):
 def setup(root,tk) -> list:
     welcomeLabel=tk.Label(root, text="Welcome to T&X Fitness", font=("Helvetica", 16))
     welcomeLabel.grid(column=1, row=0, pady=20, padx=100)
-    trackBtn = tk.Button(root, text="Track Workout", width=20, height=2,command=lambda: openTrackingScreen(root,tk))
-    trackBtn.grid(column=1, row=2,padx=100, pady=10)
+    trackBtn = tk.Button(root, text="Track Workout", width=20, height=2,command=lambda: openTrackingScreen())
+    trackBtn.grid(column=1, row=2, pady=10,padx=100)
     historyBtn = tk.Button(root, text="View History", width=20, height=2, command=lambda: openHistoryScreen(root,tk))
     historyBtn.grid(column=1, row=3, pady=10,padx=100)
     settingsBtn = tk.Button(root, text="Settings", width=20, height=2,command=lambda: openSettingsScreen(root,tk))

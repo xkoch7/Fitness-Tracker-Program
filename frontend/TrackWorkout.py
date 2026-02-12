@@ -1,12 +1,14 @@
 import threading
 import time
 import json
+
 def verifyWorkout(workout):
     if workout[1] == 'Select Workout' and workout[2] == '0' and workout[3] == '0' and workout[4] == '0':
         return False
     return True
+
 def addWorkout(root, tk,workout):
-    import vars
+    from vars import email
     # verify inputs
     if not verifyWorkout(workout):
         fillOutText=tk.Label(root, text="Please fill out all workout fields.", font=("Helvetica", 10),fg="red")
@@ -15,7 +17,7 @@ def addWorkout(root, tk,workout):
         return False
     with open('Backend\\UserInfo.json', 'r') as f:
         data = json.load(f)
-        data['workoutData'][vars.email].append(workout)
+        data['workoutData'][email].append(workout)
     
     with open('Backend\\UserInfo.json', 'w') as f:
         json.dump(data, f, indent=4)

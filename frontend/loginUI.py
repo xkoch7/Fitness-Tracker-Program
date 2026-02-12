@@ -29,12 +29,9 @@ def handleLogin(email_var, pass_var, root, tk):
         root.after(2000, lambda: temp.grid_forget())
         return False
     
-def createAccScreen(root):
-    import vars
-    vars.screen = 3  # Move to create Acount screen
-    for widget in vars.widgets:
-        widget.grid_forget()
-    root.quit()  # Exit the mainloop to refresh the screen
+def createAccScreen():
+    from vars import changeScreen
+    changeScreen(2)  # Move to create account screen
 
 #setup function to display all buttons and labels and make program functional
 # returns list of widgets that get deleted on screen change
@@ -52,7 +49,7 @@ def setup(root,tk) -> list:
 
     loginBtn = tk.Button(root, text = "Login King", command = lambda: handleLogin(emailVar, passVar, root, tk))
 
-    createAccBtn = tk.Button(root, text = "Create Account", command = lambda: createAccScreen(root))
+    createAccBtn = tk.Button(root, text = "Create Account", command = lambda: createAccScreen())
 
     imagePath = "frontend\\Images\\GymLogo.png" 
     pil_image = Image.open(imagePath)
