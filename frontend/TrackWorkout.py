@@ -9,9 +9,9 @@ def addWorkout(root, tk,workout):
     import vars
     # verify inputs
     if not verifyWorkout(workout):
-        temp=tk.Label(root, text="Please fill out all workout fields.", font=("Helvetica", 10),fg="red")
-        temp.grid(row=7, column=1)
-        root.after(2000, lambda: temp.grid_forget())
+        fillOutText=tk.Label(root, text="Please fill out all workout fields.", font=("Helvetica", 10),fg="red")
+        fillOutText.grid(row=7, column=1)
+        root.after(2000, lambda: fillOutText.grid_forget())
         return False
     with open('Backend\\UserInfo.json', 'r') as f:
         data = json.load(f)
