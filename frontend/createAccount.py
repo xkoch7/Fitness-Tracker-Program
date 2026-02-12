@@ -1,14 +1,14 @@
 from Backend.GetInfo import createAcc
 
 #function that hadnles the creation of an account so a user can sign up for program
-def handleAcc(email_var, pass_var1, pass_var2, root, tk):
-    if pass_var1.get() != pass_var2.get():
-        temp_label = tk.Label(root, text="Passwords do not match please try again", font=("calibre", 10, "normal"))
-        temp_label.grid(row=5, column=1)
+def handleAcc(emailVar, passVar1, passVar2, root, tk):
+    if passVar1.get() != passVar2.get():
+        notMatching = tk.Label(root, text="Passwords do not match please try again", font=("calibre", 10, "normal"))
+        notMatching.grid(row=5, column=1)
         return
 
-    email = email_var.get()
-    password = pass_var1.get()
+    email = emailVar.get()
+    password = passVar1.get()
 
     createAcc(email, password)
 
@@ -27,7 +27,6 @@ def setup(root,tk) -> list:
     emailVar = tk.StringVar()
     passVar1 = tk.StringVar()
     passVar2 = tk.StringVar()
-    pass_var = tk.StringVar()
     emailLabel = tk.Label(root, text = "Enter email:", font=("calibre", 10,"normal"))
 
     emailEntry = tk.Entry(root, textvariable = emailVar, font=("calibre", 10,"normal"))

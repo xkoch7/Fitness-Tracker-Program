@@ -7,7 +7,6 @@ def getInfo(emailVar, passVar) -> bool:
     with open(DATAFILE,"r", encoding="utf-8") as f:
         emails= json.load(f)['emails']
         if emailVar not in emails.keys():
-            
             return False
         else:
             if emails[emailVar]!=passVar:
@@ -24,19 +23,11 @@ def createAcc(emailVar, passVar):
     with open(DATAFILE,"r" ) as f:
         emails= json.load(f)
         emails['emails'][emailVar] = passVar
-        emails['workoutData'][emailVar] = {}
+        emails['workoutData'][emailVar] = []
     
     with open(DATAFILE,"w", encoding="utf-8") as f:
         json.dump(emails, f, indent=4)
-        
 
-def createAcc(email_var, pass_var):
-    with open(DATA_FILE,"W", encoding="utf-8") as f:
-        emails= json.load(f)['emails']
-        emails[email_var] = pass_var
-
-
-        json.dump({"emails": emails}, f, indent=4)
 if __name__ == "__main__":
     import tkinter as tk
     root= tk.Tk()

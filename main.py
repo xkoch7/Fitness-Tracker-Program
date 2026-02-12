@@ -16,4 +16,3 @@ while vars.screen < len(screens) and vars.screen >= 0:
     if vars.screen == 0:
         break
     vars.root.mainloop()
-        

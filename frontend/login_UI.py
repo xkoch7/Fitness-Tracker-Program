@@ -70,7 +70,7 @@ def setup(root,tk) -> list:
     imageLabel.grid(row=0, column=1)
     loginBtn.grid(row=4, column=1)
     createAccBtn.grid(row=6, column=1)
-    return [emailLabel, emailEntry, passLabel, passEntry, loginBtn, imageLabel]
+    return [emailLabel, emailEntry, passLabel, passEntry, loginBtn, imageLabel, createAccBtn]
 
 if __name__ == "__main__":
     import tkinter as tk
