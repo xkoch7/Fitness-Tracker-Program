@@ -1,11 +1,14 @@
 import threading
 import time
 import json
-
+def verifyWorkout(workout):
+    if workout[1] == 'Select Workout' and workout[2] == '0' and workout[3] == '0' and workout[4] == '0':
+        return False
+    return True
 def addWorkout(root, tk,workout):
     import vars
     # verify inputs
-    if workout[1] == 'Select Workout' or workout[2] == '0' or workout[3] == '0' or workout[4] == '0':
+    if not verifyWorkout(workout):
         temp=tk.Label(root, text="Please fill out all workout fields.", font=("Helvetica", 10),fg="red")
         temp.grid(row=7, column=1)
         root.after(2000, lambda: temp.grid_forget())
@@ -49,6 +52,7 @@ def updateWorkoutList(root, tk, muscleGroupValue):
             else:
                 otherEntry.grid_forget()
                 otherLabel.grid_forget()
+                
             workoutStats=[muscleGroupValue.get(), workout.get(), reps.get(), sets.get(), weight.get()]
             specWorkouts = workoutOptions.get(muscleGroupValue.get(), [])
             subOpMenu=tk.OptionMenu(root,workout,'Select Workout',*specWorkouts)

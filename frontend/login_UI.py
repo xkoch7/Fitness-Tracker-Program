@@ -37,6 +37,7 @@ def createAccScreen(root):
     root.quit()  # Exit the mainloop to refresh the screen
 
 #setup function to display all buttons and labels and make program functional
+# returns list of widgets that get deleted on screen change
 def setup(root,tk) -> list:
     emailVar = tk.StringVar()
     passVar = tk.StringVar()

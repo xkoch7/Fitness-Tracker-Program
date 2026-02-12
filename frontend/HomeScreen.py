@@ -18,6 +18,7 @@ def openSettingsScreen(root,tk):
     root.after(2000, lambda: temp.grid_forget())  
      
 #function to set up all buttons and labels actually adding something to the visuals and functionality
+# returns list of widgets that get deleted on screen change
 def setup(root,tk) -> list:
     welcome_label=tk.Label(root, text="Welcome to T&X Fitness", font=("Helvetica", 16))
     welcome_label.grid(column=1, row=0, pady=20, padx=100)

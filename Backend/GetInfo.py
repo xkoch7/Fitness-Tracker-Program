@@ -29,6 +29,14 @@ def createAcc(emailVar, passVar):
     with open(DATAFILE,"w", encoding="utf-8") as f:
         json.dump(emails, f, indent=4)
         
+
+def createAcc(email_var, pass_var):
+    with open(DATA_FILE,"W", encoding="utf-8") as f:
+        emails= json.load(f)['emails']
+        emails[email_var] = pass_var
+
+
+        json.dump({"emails": emails}, f, indent=4)
 if __name__ == "__main__":
     import tkinter as tk
     root= tk.Tk()
