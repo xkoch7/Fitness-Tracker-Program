@@ -3,11 +3,13 @@ def openTrackingScreen(root,tk):
     temp=tk.Label(root, text="Tracking Screen - Under Construction", font=("Helvetica", 16))
     temp.grid(column=1, row=5)
     root.after(2000, lambda: temp.grid_forget())
+    
 #function to acces the home screen main ui to access all info (currently working on)
 def openHistoryScreen(root,tk):
     temp=tk.Label(root, text="Home Screen - Under Construction", font=("Helvetica", 16))
     temp.grid(column=1, row=6)
     root.after(2000, lambda: temp.grid_forget())  
+    
 #function to open settings screen implemented to add a more personal touch to the program (currently working on)
 def openSettingsScreen(root,tk):
     temp=tk.Label(root, text="Settings Screen - Under Construction", font=("Helvetica", 16)) 

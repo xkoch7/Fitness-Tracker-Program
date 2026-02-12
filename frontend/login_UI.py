@@ -13,6 +13,7 @@ def handleLogin(email_var, pass_var, root, tk):
         temp.grid(row=3, column=1)
         root.after(2000, lambda: temp.grid_forget())
         return False
+    
     # verify login info
     if getInfo(email, password):
         import vars
@@ -21,11 +22,13 @@ def handleLogin(email_var, pass_var, root, tk):
         for widget in vars.widgets:
             widget.grid_forget()
         root.quit()  # Exit the mainloop to refresh the screen
+        
     else:
         temp=tk.Label(root, text="Invalid email or password. Please try again.", font=("Helvetica", 10),fg="red")
         temp.grid(row=3, column=1)
         root.after(2000, lambda: temp.grid_forget())
         return False
+    
 def createAccScreen(root):
     import vars
     vars.screen = 3  # Move to create Acount screen
@@ -67,6 +70,7 @@ def setup(root,tk) -> list:
     loginBtn.grid(row=4, column=1)
     createAccBtn.grid(row=6, column=1)
     return [emailLabel, emailEntry, passLabel, passEntry, loginBtn, imageLabel]
+
 if __name__ == "__main__":
     import tkinter as tk
     root= tk.Tk()
