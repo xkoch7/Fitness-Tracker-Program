@@ -5,9 +5,8 @@ def openTrackingScreen():
     
 #function to acces the home screen main ui to access all info (currently working on)
 def openHistoryScreen(root,tk):
-    underConst=tk.Label(root, text="Home Screen - Under Construction", font=("Helvetica", 16))
-    underConst.grid(column=1, row=6)
-    root.after(2000, lambda: underConst.grid_forget())  
+    from vars import changeScreen
+    changeScreen(5)
     
 #function to open settings screen implemented to add a more personal touch to the program (currently working on)
 def openSettingsScreen(root,tk):
