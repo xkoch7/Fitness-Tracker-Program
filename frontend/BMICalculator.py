@@ -7,6 +7,7 @@ def calculateBMI(height, weight, root):
     bmi_value = 703 * (weight / (height**2))
     bmi_label = tk.Label(root, text=f"Your BMI: {round(bmi_value, 2)}", font=("Helvetica", 12, "bold"), justify="center")
     bmi_label.grid(column=1, row=8)
+    return round(bmi_value, 2)
 
 def setup(root):
     weight_var = tk.IntVar()
