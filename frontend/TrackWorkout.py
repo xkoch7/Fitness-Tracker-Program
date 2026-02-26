@@ -3,7 +3,7 @@ import time
 import json
 
 def verifyWorkout(workout):
-    if workout[1] == 'Select Workout' and workout[2] == '0' and workout[3] == '0' and workout[4] == '0':
+    if workout[1] == 'Select Workout' and workout[2] <= 0 and workout[3] <= 0 and workout[4] <= 0:
         return False
     return True
 
@@ -25,9 +25,9 @@ def addWorkout(root, tk,workout):
 def updateWorkoutList(root, tk, muscleGroupValue):
     workoutStats=[]
     workout=tk.StringVar(value='Select Workout')
-    reps= tk.StringVar(value='0')
-    sets= tk.StringVar(value='0')
-    weight= tk.StringVar(value='0')
+    reps= tk.IntVar(value=0)
+    sets= tk.IntVar(value=0)
+    weight= tk.IntVar(value=0)
     while True:
         
         addWorkoutBtn = tk.Button(root, text="Add Workout", width=20, height=2,command=lambda: addWorkout(root,tk,workoutStats))

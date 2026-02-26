@@ -20,6 +20,8 @@ def getInfo(emailVar, passVar) -> bool:
 #function to allow user to create account and writes information to json file
 
 def createAcc(emailVar, passVar):
+    if not emailVar or not passVar:
+         return False
     with open(DATAFILE,"r" ) as f:
         emails= json.load(f)
         emails['emails'][emailVar] = passVar
@@ -27,6 +29,7 @@ def createAcc(emailVar, passVar):
     
     with open(DATAFILE,"w", encoding="utf-8") as f:
         json.dump(emails, f, indent=4)
+    return True
 
 if __name__ == "__main__":
     import tkinter as tk
