@@ -2,6 +2,9 @@
 def openTrackingScreen():
     from vars import changeScreen
     changeScreen(4) 
+
+def openBMIScreen(root,tk):
+    return
     
 #function to acces the home screen main ui to access all info (currently working on)
 def openHistoryScreen(root,tk):
@@ -33,7 +36,7 @@ def setup(root,tk) -> list:
     settingsBtn.grid(column=1, row=4, pady=10, padx=100)
     logOutBtn = tk.Button(root, text="Log Out", width=20, height=2, command = lambda:logUserOut())
     logOutBtn.grid(column=1, row=5, pady=10, padx=100)
-    return [trackBtn, historyBtn, settingsBtn, logOutBtn]
+    return [welcomeLabel, trackBtn, historyBtn, settingsBtn, logOutBtn]
     
 
 if __name__ == "__main__":
