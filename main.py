@@ -11,6 +11,7 @@ import frontend.TrackWorkout as TrackWorkout
 #setting different screens from other files
 screens = [0, loginUI, createAccount, HomeScreen, TrackWorkout]
 #ensures that theres only one screen showing at a time
+
 while vars.screen < len(screens) and vars.screen >= 0:
     vars.widgets = screens[vars.screen].setup(vars.root, vars.tk)
     if vars.screen == 0:
