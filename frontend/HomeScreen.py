@@ -3,6 +3,9 @@ def openTrackingScreen(root,tk):
     underConst=tk.Label(root, text="Tracking Screen - Under Construction", font=("Helvetica", 16))
     underConst.grid(column=1, row=5)
     root.after(2000, lambda: underConst.grid_forget())
+
+def openBMIScreen(root,tk):
+    return
     
 #function to acces the home screen main ui to access all info (currently working on)
 def openHistoryScreen(root,tk):
@@ -28,7 +31,7 @@ def setup(root,tk) -> list:
     historyBtn.grid(column=1, row=3, pady=10,padx=100)
     settingsBtn = tk.Button(root, text="Settings", width=20, height=2,command=lambda: openSettingsScreen(root,tk))
     settingsBtn.grid(column=1, row=4, pady=10,padx=100)
-    return [trackBtn, historyBtn, settingsBtn]
+    return [welcomeLabel, trackBtn, historyBtn, settingsBtn]
     
 
 if __name__ == "__main__":
