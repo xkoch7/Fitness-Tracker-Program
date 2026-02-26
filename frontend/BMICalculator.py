@@ -1,8 +1,8 @@
 import tkinter as tk
 
 def calculateBMI(height, weight, root):
-    if height <= 0:
-        return
+    if height <= 0 or weight <= 0:
+        return False
     
     bmi_value = 703 * (weight / (height**2))
     bmi_label = tk.Label(root, text=f"Your BMI: {round(bmi_value, 2)}", font=("Helvetica", 12, "bold"), justify="center")
