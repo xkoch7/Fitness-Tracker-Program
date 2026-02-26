@@ -8,6 +8,7 @@ root.geometry("500x850")
 widgets=[]
 email=""
 index=0
+
 def changeScreen(newScreen: int) -> None:
     global screen, widgets,root
     screen = newScreen  # Move to the new screen

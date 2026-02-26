@@ -49,12 +49,12 @@ def cycleEntries(step):
 
 def setup(root,tk) -> list:
     cycleEntries(0)
-    historyLabel=tk.Label(root, text="Workout History", font=("Helvetica", 16))
-    historyLabel.grid(column=1, row=0, pady=20, padx=100)
-    nextBtn = tk.Button(root, text="Next", width=20, height=2, command=lambda: cycleEntries(1))
-    nextBtn.grid(column=1, row=2, pady=10,padx=100)
-    prevBtn = tk.Button(root, text="Previous", width=20, height=2, command=lambda: cycleEntries(-1))
-    prevBtn.grid(column=1, row=3, pady=10,padx=100)
+    historyLabel=tk.Label(root, text="Workout History", font=("Helvetica", 16),justify="center")
+    historyLabel.grid(column=1, row=0)
+    nextBtn = tk.Button(root, text="Next", width=20, height=2, command=lambda: cycleEntries(1),justify="center")
+    nextBtn.grid(column=1, row=2)
+    prevBtn = tk.Button(root, text="Previous", width=20, height=2, command=lambda: cycleEntries(-1),justify="center")
+    prevBtn.grid(column=1, row=3)
     return [historyLabel, nextBtn, prevBtn]
     
 
