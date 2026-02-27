@@ -9,9 +9,14 @@ Using python and tkinter we plan on making a fitness tracker program. With a cle
 This app will allow the user to add workouts to their personal database to allow for easier tracking of their progress of the gym. Its perfect for those who want to take their fitness journey to the next level and really get into keeping themselves healthy.
 
 # Build and Run Instructions
+**Testing**
+
+This code base uses pytest pulling from different funcitons meant for logging in tracking workouts and BMI
+In order to run pytest:
+`Call pytest in the main directory "Fitness-Tracker-Program"`
 
 **Requirements:**
- - Python 3.6+ (with tkinter, pillow  and json libraries)
+ - Python 3.6+ (with tkinter, pytest,pillow  and json libraries)
 
 # Structure/Design
 **Structure:**
