@@ -1,11 +1,11 @@
 from Backend import GetInfo
 from frontend import TrackWorkout
 import json, vars
+from unittest.mock import MagicMock
 def test_login():
     import tkinter as tk
-    root= tk.Tk()
-    root.title("T&X Fitness")
-    root.geometry("500x850")
+    
+
     # Test creating an account (Pass)
     em=tk.StringVar(value="test1")
     pw=tk.StringVar(value="test2")
@@ -40,13 +40,11 @@ def test_login():
     
 def test_workout_tracking():
     import tkinter as tk
-    root= tk.Tk()
-    root.title("T&X Fitness")
-    root.geometry("500x850")
+
     # Test adding a workout (Pass)
     vars.email = "test1"
     workout = ["Chest", "Bench Press", 10, 3, 100]
-    TrackWorkout.addWorkout(root, tk, workout)
+    TrackWorkout.addWorkout(MagicMock(), tk, workout)
     with open('Backend\\UserInfo.json', 'r') as f:
         data = json.load(f)
         assert workout in data['workoutData'][vars.email]
