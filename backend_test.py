@@ -65,4 +65,6 @@ def test_workout_tracking():
         assert len(data['workoutData'][vars.email]) == 3
         del data['workoutData'][vars.email]
         del data['emails'][vars.email]
+    with open('Backend\\UserInfo.json', 'w') as f:
+        json.dump(data, f, indent=4)
    

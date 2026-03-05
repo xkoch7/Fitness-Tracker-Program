@@ -1,8 +1,30 @@
 {
     "emails": {
-       
+        "test1": "test2"
     },
     "workoutData": {
-        
+        "test1": [
+            [
+                "Chest",
+                "Bench Press",
+                10,
+                3,
+                100
+            ],
+            [
+                "Arms",
+                "Bicep Curls",
+                30,
+                4,
+                50
+            ],
+            [
+                "Legs",
+                "Squats",
+                20,
+                5,
+                150
+            ]
+        ]
     }
 }
