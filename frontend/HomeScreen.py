@@ -4,8 +4,14 @@ def openTrackingScreen(root,tk):
     underConst.grid(column=1, row=5)
     root.after(2000, lambda: underConst.grid_forget())
 
-def openBMIScreen(root,tk):
-    return
+def openBMIScreen(root, tk):
+    import vars
+    vars.screen = 4  # Move to BMI screen
+    for widget in vars.widgets:
+        widget.grid_forget()
+    root.quit()  # Exit the mainloop to refresh the screen
+
+
     
 #function to acces the home screen main ui to access all info (currently working on)
 def openHistoryScreen(root,tk):
@@ -29,8 +35,10 @@ def setup(root,tk) -> list:
     trackBtn.grid(column=1, row=2,padx=100, pady=10)
     historyBtn = tk.Button(root, text="View History", width=20, height=2, command=lambda: openHistoryScreen(root,tk))
     historyBtn.grid(column=1, row=3, pady=10,padx=100)
+    BMIBtn = tk.Button(root, text="Calculate BMI", width=20, height=2, command=lambda: openBMIScreen(root, tk))
+    BMIBtn.grid(column=1, row=4, pady=10,padx=100)
     settingsBtn = tk.Button(root, text="Settings", width=20, height=2,command=lambda: openSettingsScreen(root,tk))
-    settingsBtn.grid(column=1, row=4, pady=10,padx=100)
+    settingsBtn.grid(column=1, row=5, pady=10,padx=100)
     return [welcomeLabel, trackBtn, historyBtn, settingsBtn]
     
 

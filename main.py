@@ -8,8 +8,9 @@ import vars
 import frontend.HomeScreen as HomeScreen
 import frontend.login_UI as login_UI
 import frontend.createAccount as createAccount
+import frontend.BMICalculator as BMICalculator
 #setting different screens from other files
-screens = [0, login_UI, HomeScreen, createAccount]
+screens = [0, login_UI, HomeScreen, createAccount, BMICalculator]
 #ensures that theres only one screen showing at a time
 while vars.screen < len(screens) and vars.screen >= 0:
     vars.widgets = screens[vars.screen].setup(vars.root, vars.tk)
