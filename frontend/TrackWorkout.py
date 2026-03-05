@@ -11,7 +11,7 @@ def addWorkout(root, tk,workout):
     from vars import email
     from os.path import abspath, dirname, join
     parent_path = dirname(abspath(__file__))
-    path = join(parent_path, 'Backend\\UserInfo.json')
+    path = join(parent_path, 'Backend/UserInfo.json')
     # verify inputs
     if not verifyWorkout(workout):
         fillOutText=tk.Label(root, text="Please fill out all workout fields.", font=("Helvetica", 10),fg="red")

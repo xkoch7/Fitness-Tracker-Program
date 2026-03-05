@@ -4,7 +4,7 @@ import json, vars
 from unittest.mock import MagicMock
 from os.path import abspath, dirname, join
 parent_path = dirname(abspath(__file__))
-path = join(parent_path, 'Backend\\UserInfo.json')
+path = join(parent_path, 'Backend/UserInfo.json')
 def test_login():
     import tkinter as tk
     
