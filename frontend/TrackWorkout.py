@@ -11,6 +11,7 @@ def addWorkout(root, tk,workout):
     from vars import email
     from os.path import abspath, dirname, join
     parent_path = dirname(abspath(__file__))
+    parent_path=parent_path.strip("Fitness-Tracker-Program")
     path = join(parent_path, 'Backend/UserInfo.json')
     # verify inputs
     if not verifyWorkout(workout):

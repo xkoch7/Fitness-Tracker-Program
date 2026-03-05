@@ -2,6 +2,8 @@
 import json
 from os.path import abspath, dirname, join
 parent_path = dirname(abspath(__file__))
+parent_path=parent_path.strip("Fitness-Tracker-Program")
+
 DATAFILE = join(parent_path, 'Backend/UserInfo.json')
 def getInfo(emailVar, passVar) -> bool:
     #opening data file in order to check if email and password entered are saved
