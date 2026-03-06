@@ -3,7 +3,7 @@ from frontend import TrackWorkout
 import json, vars
 from unittest.mock import MagicMock
 from pathlib import Path
-base_path = Path(__file__).parent 
+base_path = Path(__file__).parent
 path = base_path / "Backend" / "UserInfo.json"
 
 def test_login():
