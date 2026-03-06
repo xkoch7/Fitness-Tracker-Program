@@ -1,7 +1,11 @@
+import os
+import tkinter as tk
 
-import tkinter  as tk
-
-root = tk.Tk()
+# Only create root if we aren't in a headless environment
+if "DISPLAY" in os.environ or os.name == 'nt':
+    root = tk.Tk()
+else:
+    root = None # Or a Mock object
 root.title("T&X Fitness")
 # Set the window size to 500 pixels wide by 850 high
 root.geometry("500x850")

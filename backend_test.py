@@ -1,16 +1,20 @@
 from Backend import GetInfo
 from frontend import TrackWorkout
 import json, vars
+from unittest.mock import MagicMock
+from pathlib import Path
+base_path = Path(__file__).parent
+path = base_path / "Backend" / "UserInfo.json"
+
 def test_login():
     import tkinter as tk
-    root= tk.Tk()
-    root.title("T&X Fitness")
-    root.geometry("500x850")
+    
+
     # Test creating an account (Pass)
     em=tk.StringVar(value="test1")
     pw=tk.StringVar(value="test2")
     GetInfo.createAcc(em.get(), pw.get())
-    with open('Backend\\UserInfo.json', 'r') as f:
+    with open(path, 'r') as f:
         data = json.load(f)
         assert em.get() in data['emails']
         assert data['emails'][em.get()] == pw.get()
@@ -40,14 +44,12 @@ def test_login():
     
 def test_workout_tracking():
     import tkinter as tk
-    root= tk.Tk()
-    root.title("T&X Fitness")
-    root.geometry("500x850")
+
     # Test adding a workout (Pass)
     vars.email = "test1"
     workout = ["Chest", "Bench Press", 10, 3, 100]
-    TrackWorkout.addWorkout(root, tk, workout)
-    with open('Backend\\UserInfo.json', 'r') as f:
+    TrackWorkout.addWorkout(MagicMock(), tk, workout)
+    with open(path, 'r') as f:
         data = json.load(f)
         assert workout in data['workoutData'][vars.email]
         
@@ -60,9 +62,12 @@ def test_workout_tracking():
     TrackWorkout.addWorkout(tk.Tk(), tk, workout)
     workout = ["Legs", "Squats", 20, 5, 150]
     TrackWorkout.addWorkout(tk.Tk(), tk, workout)
-    with open('Backend\\UserInfo.json', 'r') as f:
+    
+    with open(path, 'r') as f:
         data = json.load(f)
         assert len(data['workoutData'][vars.email]) == 3
         del data['workoutData'][vars.email]
         del data['emails'][vars.email]
+    with open(path, 'w') as f:
+        json.dump(data, f, indent=4)
    

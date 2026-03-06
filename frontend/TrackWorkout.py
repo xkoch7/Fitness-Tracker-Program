@@ -1,3 +1,4 @@
+from posixpath import dirname
 import threading
 import time
 import json
@@ -9,17 +10,20 @@ def verifyWorkout(workout):
 
 def addWorkout(root, tk,workout):
     from vars import email
+    from pathlib import Path
+    base_path = Path(__file__).parent.parent
+    path = base_path / "Backend" / "UserInfo.json"
     # verify inputs
     if not verifyWorkout(workout):
         fillOutText=tk.Label(root, text="Please fill out all workout fields.", font=("Helvetica", 10),fg="red")
         fillOutText.grid(row=7, column=1)
         root.after(2000, lambda: fillOutText.grid_forget())
         return False
-    with open('Backend\\UserInfo.json', 'r') as f:
+    with open(path, 'r') as f:
         data = json.load(f)
         data['workoutData'][email].append(workout)
     
-    with open('Backend\\UserInfo.json', 'w') as f:
+    with open(path, 'w') as f:
         json.dump(data, f, indent=4)
 
 def updateWorkoutList(root, tk, muscleGroupValue):
