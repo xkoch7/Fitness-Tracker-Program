@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 base_path = Path(__file__).parent 
-file_path = base_path / "UserInfo.json"
+file_path = base_path / "Backend" / "UserInfo.json"
 def getInfo(emailVar, passVar) -> bool:
     #opening data file in order to check if email and password entered are saved
     #used in login_UI.py when user is logging in
