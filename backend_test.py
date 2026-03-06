@@ -2,10 +2,10 @@ from Backend import GetInfo
 from frontend import TrackWorkout
 import json, vars
 from unittest.mock import MagicMock
-from os.path import abspath, dirname, join
-parent_path = (dirname(abspath(__file__)))
+from pathlib import Path
+base_path = Path(__file__).parent 
+path = base_path / "UserInfo.json"
 
-path = join(parent_path, 'Backend/UserInfo.json')
 def test_login():
     import tkinter as tk
     

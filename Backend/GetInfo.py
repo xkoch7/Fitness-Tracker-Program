@@ -1,12 +1,12 @@
 
 import json
-from os.path import abspath, dirname, join
-parent_path = (dirname(abspath(__file__)))
-DATAFILE = join(parent_path, 'Backend/UserInfo.json')
+from pathlib import Path
+base_path = Path(__file__).parent 
+file_path = base_path / "UserInfo.json"
 def getInfo(emailVar, passVar) -> bool:
     #opening data file in order to check if email and password entered are saved
     #used in login_UI.py when user is logging in
-    with open(DATAFILE,"r", encoding="utf-8") as f:
+    with open(file_path,"r", encoding="utf-8") as f:
         emails= json.load(f)['emails']
         if emailVar not in emails.keys():
             return False
@@ -24,12 +24,12 @@ def getInfo(emailVar, passVar) -> bool:
 def createAcc(emailVar, passVar):
     if not emailVar or not passVar:
          return False
-    with open(DATAFILE,"r" ) as f:
+    with open(file_path,"r" ) as f:
         emails= json.load(f)
         emails['emails'][emailVar] = passVar
         emails['workoutData'][emailVar] = []
     
-    with open(DATAFILE,"w", encoding="utf-8") as f:
+    with open(file_path,"w", encoding="utf-8") as f:
         json.dump(emails, f, indent=4)
     return True
 
