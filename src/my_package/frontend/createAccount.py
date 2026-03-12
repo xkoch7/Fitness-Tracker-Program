@@ -12,7 +12,7 @@ def handleAcc(emailVar, passVar1, passVar2, root, tk):
 
     createAcc(email, password)
 
-    from vars import changeScreen
+    from src.my_package.vars import changeScreen
     changeScreen(3)  # Move to login screen after account creation
 
 

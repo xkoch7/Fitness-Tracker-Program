@@ -13,8 +13,8 @@ widgets=[]
 email=""
 index=0
 screen=1
+
 def changeScreen(newScreen: int) -> None:
-    
     global screen
     screen = newScreen  # Move to the new screen
     for widget in widgets:

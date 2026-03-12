@@ -1,17 +1,16 @@
 import json
 
 def cycleEntries(step):
-    from vars import index, widgets
+    from src.my_package.vars import index, widgets
     if step == 1:
         index += 3
     elif step == -1:
         index -= 3
     
-    from vars import email
+    from src.my_package.vars import email
     with open('Backend\\UserInfo.json', 'r') as f:
         data = json.load(f)
         workouts = data['workoutData'].get(email, [])
-    
         if workouts== []:
             noWorkouts=tk.Label(root, text="No workouts logged yet.", font=("Helvetica", 20),fg="red")
             noWorkouts.grid(row=7, column=1)

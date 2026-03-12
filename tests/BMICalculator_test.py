@@ -1,5 +1,5 @@
 import tkinter as tk
-from frontend import BMICalculator
+from my_package.frontend import BMICalculator #type:ignore
 from unittest.mock import MagicMock
 def testBMICalculatorFail():
     #this will fail not correct bmi correst bmi that will pass is 25.82 while 100.0 will fail

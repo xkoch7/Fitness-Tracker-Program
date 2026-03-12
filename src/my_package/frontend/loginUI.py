@@ -16,7 +16,7 @@ def handleLogin(email_var, pass_var, root, tk):
     
     # verify login info
     if getInfo(email, password):
-        import vars
+        import src.my_package.vars as vars
         vars.screen = 2  # Move to HomeScreen
         vars.email = email
         for widget in vars.widgets:
@@ -30,7 +30,7 @@ def handleLogin(email_var, pass_var, root, tk):
         return False
     
 def createAccScreen():
-    from vars import changeScreen
+    from src.my_package.vars import changeScreen
     changeScreen(2)  # Move to create account screen
 
 #setup function to display all buttons and labels and make program functional
@@ -51,7 +51,7 @@ def setup(root,tk) -> list:
 
     createAccBtn = tk.Button(root, text = "Create Account", command = lambda: createAccScreen())
 
-    imagePath = "frontend\\Images\\GymLogo.png" 
+    imagePath = "src\\my_package\\frontend\\Images\\GymLogo.png" 
     pil_image = Image.open(imagePath)
     newWidth = 250
     newHeight = 250

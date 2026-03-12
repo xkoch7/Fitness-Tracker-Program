@@ -2,13 +2,15 @@ import sys
 import os
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(PROJECT_ROOT)
-import vars
+import vars as vars
 import frontend.HomeScreen as HomeScreen
 import frontend.loginUI as loginUI
 import frontend.createAccount as createAccount
 import frontend.TrackWorkout as TrackWorkout
+import frontend.BMICalculator as BMIScreen
+import frontend.History as HistoryScreen
 #setting different screens from other files
-screens = [0, loginUI, createAccount, HomeScreen, TrackWorkout]
+screens = [0, loginUI, createAccount, HomeScreen, TrackWorkout, HistoryScreen, BMIScreen ]
 #ensures that theres only one screen showing at a time
 
 while vars.screen < len(screens) and vars.screen >= 0:

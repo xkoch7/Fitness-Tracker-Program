@@ -1,9 +1,12 @@
 import tkinter as tk
 
 def calculateBMI(height, weight, root):
-    if height <= 0:
-        return
-    
+    if height <= 0 or weight <= 0:
+        inputWarning=tk.Label(root, text="Height/Weight must be greater than zero.", font=("Helvetica", 10), fg="red")
+        inputWarning.grid(column=1, row=8)
+        root.after(2000, lambda: inputWarning.grid_forget())
+        return 
+        
     bmi_value = 703 * (weight / (height**2))
     bmi_label = tk.Label(root, text=f"Your BMI: {round(bmi_value, 2)}", font=("Helvetica", 12, "bold"), justify="center")
     bmi_label.grid(column=1, row=8)
