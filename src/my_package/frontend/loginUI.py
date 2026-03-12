@@ -30,7 +30,7 @@ def handleLogin(email_var, pass_var, root, tk):
         return False
     
 def createAccScreen():
-    from src.my_package.vars import changeScreen
+    from my_package.vars import changeScreen
     changeScreen(2)  # Move to create account screen
 
 #setup function to display all buttons and labels and make program functional

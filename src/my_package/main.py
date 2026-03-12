@@ -11,6 +11,7 @@ import frontend.BMICalculator as BMIScreen
 import frontend.History as HistoryScreen
 #setting different screens from other files
 screens = [0, loginUI, createAccount, HomeScreen, TrackWorkout, HistoryScreen, BMIScreen ]
+
 #ensures that theres only one screen showing at a time
 
 while vars.screen < len(screens) and vars.screen >= 0:

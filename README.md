@@ -22,16 +22,18 @@ In order to run pytest:
 **Structure:**
 ```
 Fitness-Tracker-Program/
-├── main.py                # Entry point
-├── vars.py                # global varibles 
-├── Backend/
-│   ├── UserInfo.json      # Json file for user data
-│   └── getInfo.py         # Login Logic
-└── frontend/
-    ├── Images/
-        └── ...
-    ├── login_UI.py        # UI Frame 1
-    └── HomeScreen.py      # UI Frame 2
+├──src/
+│    └──my_package/
+│        ├── main.py                # Entry point
+│        ├── vars.py                # global varibles 
+│        ├── Backend/
+│        │      ├── UserInfo.json      # Json file for user data
+│        │      └── getInfo.py         # Login Logic
+│         └── frontend/
+│                ├── Images/
+│                └── ...
+│                ├── login_UI.py        # UI Frame 1
+│                └── HomeScreen.py      # UI Frame 2
 ```
 
 **Design:**
@@ -59,3 +61,21 @@ Then in terminal run:
 Finally run:
 
     python -m main
+
+# Zip to Run
+
+1. Download `Fitness-Tracker.zip` as a raw folder
+
+2. Extract all files into a file named 'Fitness-Tracker'
+
+3. Run the following command in terminal to install all prerequisites:
+
+``` 
+pip install -r requirements.txt
+```
+
+4. Inside the relative path `.../Fitness-Tracker-Program/src/my_package/main.py` run:
+
+```
+python -m main
+```
