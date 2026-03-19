@@ -1,14 +1,13 @@
-from Backend import GetInfo
-from frontend import TrackWorkout
-import json, vars
+from my_package.Backend import GetInfo  # type: ignore
+from my_package.frontend import TrackWorkout # type: ignore
+import json, my_package.vars as vars # type: ignore
 from unittest.mock import MagicMock
 from pathlib import Path
-base_path = Path(__file__).parent
-path = base_path / "Backend" / "UserInfo.json"
+base_path = Path(__file__).parent.parent
+path = base_path / "src" / "my_package" / "Backend" / "UserInfo.json"
 
 def test_login():
     import tkinter as tk
-    
 
     # Test creating an account (Pass)
     em=tk.StringVar(value="test1")
@@ -70,4 +69,5 @@ def test_workout_tracking():
         del data['emails'][vars.email]
     with open(path, 'w') as f:
         json.dump(data, f, indent=4)
+        
    

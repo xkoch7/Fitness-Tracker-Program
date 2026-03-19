@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]   # or "setuptools>=61"
+build-backend = "hatchling.build"
+
+[project]
+name = "my-package"
+dynamic = ["version"]
+
+[tool.hatch.version]
+path = "src/my_package/__init__.py"
+description = "A fitness tracker program built with Python and Tkinter."
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.28",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "mypy"]

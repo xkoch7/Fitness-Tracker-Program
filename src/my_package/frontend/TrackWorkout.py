@@ -9,13 +9,13 @@ def verifyWorkout(workout):
     return True
 
 def addWorkout(root, tk,workout):
-    from vars import email
+    from my_package.vars import email
     from pathlib import Path
     base_path = Path(__file__).parent.parent
     path = base_path / "Backend" / "UserInfo.json"
     # verify inputs
     if not verifyWorkout(workout):
-        fillOutText=tk.Label(root, text="Please fill out all workout fields.", font=("Helvetica", 10),fg="red")
+        fillOutText=tk.Label(root, text="Please fill out all workout fields with positive, non-zero values.", font=("Helvetica", 10),fg="red")
         fillOutText.grid(row=7, column=1)
         root.after(2000, lambda: fillOutText.grid_forget())
         return False
@@ -25,7 +25,11 @@ def addWorkout(root, tk,workout):
     
     with open(path, 'w') as f:
         json.dump(data, f, indent=4)
-
+        
+def backToHome():
+    from my_package.vars import changeScreen
+    changeScreen(3)
+    
 def updateWorkoutList(root, tk, muscleGroupValue):
     workoutStats=[]
     workout=tk.StringVar(value='Select Workout')
@@ -79,7 +83,8 @@ def updateWorkoutList(root, tk, muscleGroupValue):
         weightEntry.grid_forget()
 
 def setup(root,tk) -> list:
-    
+    root.grid_columnconfigure(0, weight=1)
+    root.grid_columnconfigure(2, weight=1)
     muscleGroup=tk.StringVar(value='Select Group')
     
     updateWorkouts=threading.Thread(target=updateWorkoutList, args=(root, tk, muscleGroup)) 
@@ -89,8 +94,9 @@ def setup(root,tk) -> list:
     welcomeLabel.grid(column=1, row=0, pady=20, padx=100)
     opMenu=tk.OptionMenu(root,muscleGroup,  'Chest', 'Back', 'Legs', 'Arms', 'Cardio', 'Core/Abs', "Shoulders", "Other")
     opMenu.grid(column=1, row=1, pady=10)
-    
-    return [opMenu]
+    backBtn = tk.Button(root, text="Back to Home", width=20, height=2, command=lambda: backToHome())
+    backBtn.grid(column=1, row=8, pady=10)
+    return [opMenu, welcomeLabel, backBtn]
 
 if __name__ == "__main__":
     import tkinter as tk

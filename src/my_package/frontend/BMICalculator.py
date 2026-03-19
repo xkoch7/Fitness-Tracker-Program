@@ -1,15 +1,23 @@
-import tkinter as tk
 
-def calculateBMI(height, weight, root):
-    if height <= 0:
-        return
-    
+def calculateBMI(height, weight, root,tk):
+    if height <= 0 or weight <= 0:
+        inputWarning=tk.Label(root, text="Height/Weight must be greater than zero.", font=("Helvetica", 10), fg="red")
+        inputWarning.grid(column=1, row=8)
+        root.after(2000, lambda: inputWarning.grid_forget())
+        return 
+        
     bmi_value = 703 * (weight / (height**2))
     bmi_label = tk.Label(root, text=f"Your BMI: {round(bmi_value, 2)}", font=("Helvetica", 12, "bold"), justify="center")
     bmi_label.grid(column=1, row=8)
     return round(bmi_value, 2)
 
-def setup(root):
+def openHomeScreen():
+    from my_package.vars import changeScreen
+    changeScreen(3)
+    
+def setup(root, tk):
+    root.grid_columnconfigure(0, weight=1)
+    root.grid_columnconfigure(2, weight=1)
     weight_var = tk.IntVar()
     height_var = tk.IntVar()
     bmi_header = tk.Label(root, text="BMI Calculator", font=("Helvetica", 16),justify="center")
@@ -25,13 +33,17 @@ def setup(root):
     calculate_btn = tk.Button(
         root, 
         text="Calculate BMI", 
-        command=lambda: calculateBMI(height_var.get(), weight_var.get(), root)
+        command=lambda: calculateBMI(height_var.get(), weight_var.get(), root,tk)
     )
+    backBtn = tk.Button(root, text="Back to Home", command=lambda: openHomeScreen(),justify="center")
+    backBtn.grid(column=1, row=9)
     calculate_btn.grid(column=1, row=7)
+    return [bmi_header, disclaimer1, disclaimer2, backBtn, calculate_btn]
 
 if __name__ == "__main__":
+    import tkinter as tk
     root = tk.Tk()
     root.title("T&X Fitness")
     root.geometry("500x850")
-    setup(root)
+    setup(root, tk)
     root.mainloop() 

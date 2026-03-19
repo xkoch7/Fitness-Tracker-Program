@@ -1,14 +1,15 @@
 #function to acces the tracking screen in order to effectively track workouts (currently working on)
 def openTrackingScreen():
-    from vars import changeScreen
+    from my_package.vars import changeScreen
     changeScreen(4) 
 
 def openBMIScreen(root,tk):
-    return
+    from my_package.vars import changeScreen
+    changeScreen(6)
     
 #function to acces the home screen main ui to access all info (currently working on)
 def openHistoryScreen(root,tk):
-    from vars import changeScreen
+    from my_package.vars import changeScreen
     changeScreen(5)
     
 #function to open settings screen implemented to add a more personal touch to the program (currently working on)
@@ -19,13 +20,15 @@ def openSettingsScreen(root,tk):
     root.after(2000, lambda: underConst.grid_forget())  
     
 def logUserOut():
-    from vars import changeScreen, email
-    email =''
-    changeScreen(0) 
+    import src.my_package.vars as vars
+    vars.email =''
+    vars.changeScreen(0) 
     
 #function to set up all buttons and labels actually adding something to the visuals and functionality
 # returns list of widgets that get deleted on screen change
 def setup(root,tk) -> list:
+    root.grid_columnconfigure(0, weight=1)
+    root.grid_columnconfigure(2, weight=1)
     welcomeLabel=tk.Label(root, text="Welcome to T&X Fitness", font=("Helvetica", 16))
     welcomeLabel.grid(column=1, row=0, pady=20, padx=100)
     trackBtn = tk.Button(root, text="Track Workout", width=20, height=2,command=lambda: openTrackingScreen())
@@ -35,7 +38,9 @@ def setup(root,tk) -> list:
     settingsBtn = tk.Button(root, text="Settings", width=20, height=2, command=lambda: openSettingsScreen(root,tk))
     settingsBtn.grid(column=1, row=4, pady=10, padx=100)
     logOutBtn = tk.Button(root, text="Log Out", width=20, height=2, command = lambda:logUserOut())
-    logOutBtn.grid(column=1, row=5, pady=10, padx=100)
+    logOutBtn.grid(column=1, row=6, pady=10, padx=100)
+    BMIBtn = tk.Button(root, text="Calculate BMI", width=20, height=2, command=lambda: openBMIScreen(root, tk))
+    BMIBtn.grid(column=1, row=5, pady=10,padx=100)
     return [welcomeLabel, trackBtn, historyBtn, settingsBtn, logOutBtn]
     
 
