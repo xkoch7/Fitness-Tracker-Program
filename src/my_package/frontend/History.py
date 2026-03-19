@@ -1,13 +1,13 @@
 import json
 
 def cycleEntries(step):
-    from src.my_package.vars import index, widgets
+    from my_package.vars import index, widgets
     if step == 1:
         index += 3
     elif step == -1:
         index -= 3
     
-    from src.my_package.vars import email
+    from my_package.vars import email
     with open('Backend\\UserInfo.json', 'r') as f:
         data = json.load(f)
         workouts = data['workoutData'].get(email, [])
@@ -45,7 +45,9 @@ def cycleEntries(step):
                 if workoutLabel1 not in widgets:
                     widgets.append(workoutLabel1)
     
-
+def openHomeScreen(root, tk):
+    from my_package.vars import changeScreen
+    changeScreen(3)
 def setup(root,tk) -> list:
     cycleEntries(0)
     historyLabel=tk.Label(root, text="Workout History", font=("Helvetica", 16),justify="center")
@@ -54,8 +56,9 @@ def setup(root,tk) -> list:
     nextBtn.grid(column=1, row=2)
     prevBtn = tk.Button(root, text="Previous", width=20, height=2, command=lambda: cycleEntries(-1),justify="center")
     prevBtn.grid(column=1, row=3)
-    return [historyLabel, nextBtn, prevBtn]
-    
+    backBtn = tk.Button(root, text="Back to Home", width=20, height=2, command=lambda: openHomeScreen(root, tk),justify="center")
+    backBtn.grid(column=1, row=4)
+    return [historyLabel, nextBtn, prevBtn, backBtn]
 
 if __name__ == "__main__":
     import os

@@ -1,7 +1,10 @@
 
 from PIL import ImageTk, Image
-from Backend.GetInfo import getInfo
-
+import sys
+import os
+if __name__ == "__main__":
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from Backend.GetInfo import  getInfo
 
 #function to check if inputed email matches the saved list along with the cooresponding password
 #if not correct asks user to try again or create account
@@ -10,22 +13,19 @@ def handleLogin(email_var, pass_var, root, tk):
     password = pass_var.get()
     if not email or not password:
         temp=tk.Label(root, text="Please enter both email and password.", font=("Helvetica", 10),fg="red")
-        temp.grid(row=3, column=1)
+        temp.grid(row=3, column = 2)
         root.after(2000, lambda: temp.grid_forget())
         return False
     
     # verify login info
     if getInfo(email, password):
-        import src.my_package.vars as vars
-        vars.screen = 2  # Move to HomeScreen
+        import my_package.vars as vars
+        vars.changeScreen(3)  # Move to HomeScreen
         vars.email = email
-        for widget in vars.widgets:
-            widget.grid_forget()
-        root.quit()  # Exit the mainloop to refresh the screen
         
     else:
         temp=tk.Label(root, text="Invalid email or password. Please try again.", font=("Helvetica", 10),fg="red")
-        temp.grid(row=3, column=1)
+        temp.grid(row=3, column = 2)
         root.after(2000, lambda: temp.grid_forget())
         return False
     
@@ -36,9 +36,10 @@ def createAccScreen():
 #setup function to display all buttons and labels and make program functional
 # returns list of widgets that get deleted on screen change
 def setup(root,tk) -> list:
+    root.grid_columnconfigure(0, weight=1)
     emailVar = tk.StringVar()
     passVar = tk.StringVar()
-
+    infoLabel = tk.Label(root, text="Welcome to X&T Fitness! Please log in or create an account to continue.", font=("Helvetica", 13), wraplength=400, justify="center")    
     emailLabel = tk.Label(root, text = "Enter email:", font=("calibre", 10,"normal"))
 
     emailEntry = tk.Entry(root, textvariable = emailVar, font=("calibre", 10,"normal"))
@@ -59,14 +60,15 @@ def setup(root,tk) -> list:
     tkImage = ImageTk.PhotoImage(resizedImage)
     imageLabel = tk.Label(root, image=tkImage)
     setattr(imageLabel, 'image', tkImage) 
-
-    emailLabel.grid(row=1, column=0)
-    emailEntry.grid(row=1, column=1)
-    passLabel.grid(row=2, column=0)
-    passEntry.grid(row=2, column=1)
-    imageLabel.grid(row=0, column=1)
-    loginBtn.grid(row=4, column=1)
-    createAccBtn.grid(row=6, column=1)
+    
+    imageLabel.grid(row=0, column = 2,sticky='W')
+    infoLabel.grid(row=1, column = 1, columnspan= 2, padx= 50)
+    emailLabel.grid(row=2, column = 1)
+    emailEntry.grid(row=2, column = 2)
+    passLabel.grid(row=3, column = 1)
+    passEntry.grid(row=3, column = 2)
+    loginBtn.grid(row=4, column = 2)
+    createAccBtn.grid(row=5, column = 2)
     return [emailLabel, emailEntry, passLabel, passEntry, loginBtn, imageLabel, createAccBtn]
 
 if __name__ == "__main__":
