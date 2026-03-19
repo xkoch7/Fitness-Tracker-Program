@@ -1,11 +1,11 @@
-FROM python:3.6-slim-stretch
+FROM python:3.6-slim
 
 COPY requirements.txt ./
 
 RUN pip install -r requirements.txt
 
-WORKDIR /src/my_package
+WORKDIR /src
 
 COPY . .
-
-CMD ["python", "./main.py"]
+#RUN ls /
+CMD ["python", "my_package/main.py"]
