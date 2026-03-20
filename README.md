@@ -79,3 +79,14 @@ pip install -r requirements.txt
 ```
 python -m main
 ```
+# Run with Docker
+
+Run in command line:
+```
+docker build fitnessprogram .
+```
+then run,
+```
+
+ docker run fitnessprogram
+```
