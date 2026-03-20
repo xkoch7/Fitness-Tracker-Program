@@ -4,8 +4,10 @@ COPY requirements.txt ./
 
 RUN pip install -r requirements.txt
 
-WORKDIR /src
+RUN apt-get update && apt-get install -y tk8.6
+
+WORKDIR /app
 
 COPY . .
-#RUN ls /
-CMD ["python", "my_package/main.py"]
+#RUN ls 
+CMD ["python", "src/my_package/main.py"]
